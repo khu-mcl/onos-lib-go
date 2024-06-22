@@ -17,7 +17,7 @@ jobs:
         with:
           go-version-file: 'go.mod'
       - name: Build
-        run: go build github.com/onosproject/onos-lib-go/pkg/...
+        run: make build
 
   lint:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
         with:
           go-version-file: 'go.mod'
       - name: Unit tests
-        run: go test -race github.com/onosproject/onos-lib-go/pkg/...
+        run: make test
 
   license-check:
     runs-on: ubuntu-latest
