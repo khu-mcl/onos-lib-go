@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
 #
 # SPDX-License-Identifier: Apache-2.0
+# Copyright 2024 Kyunghee University
 
 export CGO_ENABLED=1
 export GO111MODULE=on
@@ -8,7 +9,6 @@ export GO111MODULE=on
 .PHONY: build
 
 TARGET := onos-lib-go
-DOCKER_TAG ?= latest
 ONOS_PROTOC_VERSION := v0.6.9
 
 build: # @HELP build the Go binaries (default)
@@ -43,9 +43,9 @@ protos: # @HELP compile the protobuf files (using protoc-go Docker)
 publish: # @HELP publish version on github and dockerhub
 	./build/build-tools/publish-version ${VERSION}
 
-jenkins-publish: jenkins-tools # @HELP Jenkins calls this to publish artifacts
-	./build/build-tools/release-merge-commit
-	./build/build-tools/build/docs/push-docs
+#jenkins-publish: jenkins-tools # @HELP Jenkins calls this to publish artifacts
+#	./build/build-tools/release-merge-commit
+#	./build/build-tools/build/docs/push-docs
 
 all: test
 
